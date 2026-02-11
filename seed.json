@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "name": "Call Stack",
+    "category": "Fundamentals",
+    "description": "The Call Stack is a mechanism for an interpreter (like the JavaScript engine) to keep track of its place in a script that calls multiple functions. It follows the Last In, First Out (LIFO) principle. When a script calls a function, the interpreter adds it to the stack and starts carrying out the function. Any functions that are called by that function are added to the stack further up. When the current function is finished, the interpreter takes it off the stack and resumes execution where it left off in the last code listing.",
+    "keywords_for_ai": ["LIFO", "Last In First Out", "Synchronous", "Single-threaded", "Execution Context"],
+    "last_time_called": null,
+    "clarity_rate": 0,
+    "quiz": [
+      {
+        "question": "What happens if the Call Stack consumes more space than the browser assigns to it?",
+        "options": [
+          "Garbage Collection is triggered",
+          "Stack Overflow Error",
+          "The event loop clears the stack",
+          "It creates a new thread"
+        ],
+        "correctAnswer": "Stack Overflow Error",
+        "explanation": "This usually happens when there is a recursive function without an exit condition (infinite recursion)."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Primitive Types",
+    "category": "Types",
+    "description": "In JavaScript, a primitive (primitive value, primitive data type) is data that is not an object and has no methods. There are 7 primitive data types: string, number, bigint, boolean, undefined, symbol, and null. All primitives are immutable; they cannot be altered. The variable may be reassigned a new value, but the existing value can not be changed like an object, array, or function.",
+    "keywords_for_ai": ["Immutable", "Not an object", "No methods", "String", "Number", "Boolean", "Undefined", "Null", "Symbol", "BigInt"],
+    "last_time_called": null,
+    "clarity_rate": 0,
+    "quiz": [
+      {
+        "question": "What is the output of: typeof null?",
+        "options": [
+          "null",
+          "undefined",
+          "object",
+          "number"
+        ],
+        "correctAnswer": "object",
+        "explanation": "This is a historical bug in JavaScript that has been kept for compatibility. 'null' is a primitive, but typeof returns 'object'."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Value vs Reference",
+    "category": "Types",
+    "description": "Primitives are passed by value, meaning a copy of the data is created. If you change the copy, the original is not affected. Objects (including Arrays and Functions) are passed by reference, meaning the variable stores a pointer (address) to the location in memory where the object is stored. If you change the object via one variable, it affects all variables pointing to that same reference.",
+    "keywords_for_ai": ["Copy", "Pointer", "Memory address", "Mutable", "Immutable", "Independent"],
+    "last_time_called": null,
+    "clarity_rate": 0,
+    "quiz": [
+      {
+        "question": "let a = {x:1}; let b = a; b.x = 2; console.log(a.x); -- What is the output?",
+        "options": [
+          "1",
+          "2",
+          "undefined",
+          "Error"
+        ],
+        "correctAnswer": "2",
+        "explanation": "Since 'a' is an object, 'b' receives a reference to the same memory location. Modifying 'b' modifies the underlying object shared by 'a'."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Implicit Coercion",
+    "category": "Types",
+    "description": "Type coercion is the automatic or implicit conversion of values from one data type to another (such as strings to numbers). It happens when you apply operators to values of different types. 'Double equals' (==) performs coercion, while 'triple equals' (===) does not.",
+    "keywords_for_ai": ["Automatic conversion", "Double equals", "Types", "String to Number", "Truthy", "Falsy"],
+    "last_time_called": null,
+    "clarity_rate": 0,
+    "quiz": [
+      {
+        "question": "What is the result of: 1 + '2'?",
+        "options": [
+          "3",
+          "12",
+          "NaN",
+          "Error"
+        ],
+        "correctAnswer": "12",
+        "explanation": "When the + operator is used with a string, JavaScript coerces the number to a string and concatenates them."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Closures",
+    "category": "Scope",
+    "description": "A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function’s scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.",
+    "keywords_for_ai": ["Lexical environment", "Outer scope", "Inner function", "Memory", "Private variables", "Bundled"],
+    "last_time_called": null,
+    "clarity_rate": 0,
+    "quiz": [
+      {
+        "question": "What is a primary use case for Closures?",
+        "options": [
+          "To make code run faster",
+          "To create private data/variables",
+          "To change the 'this' context",
+          "To prevent hoisting"
+        ],
+        "correctAnswer": "To create private data/variables",
+        "explanation": "Closures allow you to emulate private methods, as variables inside the outer function are not accessible from the global scope, only via the inner function."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Event Loop",
+    "category": "Asynchronous",
+    "description": "The Event Loop is a process that waits for the Call Stack to be clear and then pushes callbacks from the Task Queue (or Microtask Queue) to the Call Stack. It allows JavaScript (which is single-threaded) to perform non-blocking I/O operations by offloading operations to the system kernel whenever possible.",
+    "keywords_for_ai": ["Non-blocking", "Single-threaded", "Task Queue", "Microtask Queue", "Call Stack", "Orchestrator"],
+    "last_time_called": null,
+    "clarity_rate": 0,
+    "quiz": [
+      {
+        "question": "Which queue has higher priority in the Event Loop?",
+        "options": [
+          "Macrotask Queue (setTimeout)",
+          "Microtask Queue (Promises)",
+          "They have equal priority",
+          "DOM Events Queue"
+        ],
+        "correctAnswer": "Microtask Queue (Promises)",
+        "explanation": "The Event Loop checks the Microtask queue immediately after the current stack is empty and before moving to the next Macrotask."
+      }
+    ]
+  }
+]
