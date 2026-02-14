@@ -4,7 +4,6 @@ import { FaHome } from "react-icons/fa";
 import { ImLibrary } from "react-icons/im";
 import { NavLink } from "react-router-dom";
 
-NavLink
 const NAV_ITEMS = [
   { id: 'home', label: 'Home', Icon: FaHome, link: '/' },
   { id: 'library', label: 'Library', Icon: ImLibrary, link: '/library' },
