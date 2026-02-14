@@ -1,25 +1,32 @@
-import './App.css'
+import './style/App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import useCards from './hooks/useCards'
 import Flashcard from './features/cards/components/Flashcard'
-import { useState } from 'react'
-
+import Topbar from './features/home/components/Topbar'
+import Navbar from './layout/components/Navbar'
+import Home from './pages/Home'
 
 function App() {
-  const [ count, setCount ] = useState<number>(0)
-  const { loading, cards, error } =  useCards()
-  if(loading) return <h1>Loading...</h1>
-  if(error){
-    console.error('error fetching data: ' + error)
-    return <h1>error fetching data</h1>
+  const { loading, cards, error } = useCards()
+
+  if (loading) return <h1>Loading...</h1>
+  
+  if (error) {
+    console.error('Error fetching data: ' + error)
+    return <h1>Error fetching data</h1>
   }
 
   return (
-    <div className='bg-gray-900'>
-      <div>Total: {count}/{cards.length}</div>
-      {cards.map( c =>(
-        < Flashcard  key={c.id} name={c.name} category={c.category} description={c.description} />
-      ))}
-    </div>
+    <BrowserRouter>
+      <div className='bg-gray-900 w-full h-full'>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/library" element={<>library</>} />
+          <Route path="/settings" element={<>settings</>} />
+        </Routes>
+        <Navbar />
+      </div>
+    </BrowserRouter>
   )
 }
 
