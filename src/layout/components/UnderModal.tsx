@@ -1,12 +1,8 @@
-import { type ReactNode, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
+import type { UnderModalProp } from "../types/types";
 
-interface UnderModalProp {
-  children?: ReactNode;
-  show: boolean;
-  onClose?: () => void;
-}
 
-const UnderModal = ({ children, show, onClose }: UnderModalProp) => {
+const UnderModal = ({ children, show, onClose, label='' }: UnderModalProp) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
@@ -79,9 +75,12 @@ const UnderModal = ({ children, show, onClose }: UnderModalProp) => {
       >
         <div 
           onPointerDown={startDrag}
-          className="w-full h-10 flex-shrink-0 flex items-center justify-center cursor-grab active:cursor-grabbing touch-none"
+          className={`w-full h-10 flex-shrink-0 flex items-center justify-center cursor-grab active:cursor-grabbing touch-none ${label ? ' border-b-gray-500 border-b block mx-auto h-[50px] ' : ''}`}
         >
-          <div className="w-12 h-1.5 bg-zinc-600 rounded-full" />
+          {label ? 
+            <h2 className="capitalize">{label}</h2> :
+            <div className="w-12 h-1.5 bg-zinc-600 rounded-full" />
+        }
         </div>
 
         <div ref={contentRef} className="p-6 overflow-y-auto min-h-0 pb-10">

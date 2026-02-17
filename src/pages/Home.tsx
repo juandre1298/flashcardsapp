@@ -3,8 +3,7 @@ import DeckList from "../features/home/components/DeckList"
 import IconBtn from "../components/IconBtn"
 import { IoMdAdd } from "react-icons/io";
 import { useState } from "react";
-import CreateMoreOptions from "../features/home/components/CreateMoreOptions";
-
+import CreateMoreMaster from "../features/home/components/CreateMoreMaster";
 
 const Home = () => {
   const [showCreateModal, setShowCreateModal] = useState<boolean>(false)
@@ -13,7 +12,8 @@ const Home = () => {
     <Topbar />
     <DeckList />
     <IconBtn onClick={()=> {setShowCreateModal( (prev):boolean => !prev)}} icon={<IoMdAdd />} className="bg-[#6495ED] p-2 text-3xl absolute bottom-25 right-5 rounded-full "/>
-    <CreateMoreOptions showCreateModal={showCreateModal} setShowCreateModal={setShowCreateModal}/>
+    
+    <CreateMoreMaster showCreateModal={showCreateModal} setShowCreateModal={setShowCreateModal}/>
   </div>
 }
 

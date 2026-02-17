@@ -1,9 +1,4 @@
-interface IconBtnProp {
-  icon?: React.ReactNode;
-  label?: string;
-  onClick?: () => void;
-  className?: string;
-}
+import type { IconBtnProp } from "../features/home/types/types";
 
 const IconBtn = ({ 
   icon, 

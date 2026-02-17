@@ -14,7 +14,36 @@ const addCardToDeck = async (deckId: number, cardData: Omit<Card, "id" | "deck_i
   });
 };
 
-export {
+const createDeck = async (
+  name: string, 
+  category: string = "General", 
+  description: string = ""
+) => {
+  return await db.decks.add({
+    name,
+    category,
+    description
+  });
+};
+
+const getDecksWithCounts = async () => {
+  const allDecks = await db.decks.toArray();
+  
+  return await Promise.all(
+    allDecks.map(async (deck) => {
+      const count = await db.cards
+        .where("deck_id")
+        .equals(deck.id!)
+        .count();
+        
+      return { ...deck, cardCount: count };
+    })
+  );
+};
+
+export default {
   getDeckWithCards,
-  addCardToDeck
+  addCardToDeck,
+  createDeck,
+  getDecksWithCounts
 }
